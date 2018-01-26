@@ -10,7 +10,7 @@
 #define IDM_EXIT                        105
 #define IDI_ICON                        107
 #define IDI_SMALL                       108
-#define IDC_ICON                        109
+#define IDC_ICONE                        109
 #define IDR_MAINFRAME                   128
 #define ID_FILE_OPEN                    32771
 #define IDC_STATIC                      -1
