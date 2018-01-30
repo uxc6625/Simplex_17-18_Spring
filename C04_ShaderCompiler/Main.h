@@ -1,14 +1,16 @@
 /*--------------------------------------------------------------------------------------------------
-This project was generated in 2013
+This project was generated in 2018
 --------------------------------------------------------------------------------------------------*/
 #ifndef __MAIN_H_
 #define __MAIN_H_
 
-#include <iostream>
-#include "Simplex\Simplex.h"
-#include "GLFW\glfw3.h"
+#include "AppClass.h"
+/*
+USAGE: will safely delete the input pointer and initialize it to nullptr, DOES NOT WORK WITH POINTER ARRAY
+*/
+#define SafeDelete(p){ if(p) { delete p; p = nullptr; } }
 
-#endif //_MAIN_H
+#endif //__MAIN_H_
 
 /*
 USAGE:

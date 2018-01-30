@@ -53,7 +53,7 @@ int main()
 				// adjust the viewport when the window is resized
 				glViewport(0, 0, event.size.width, event.size.height);
 				pMeshMngr->SetRenderTarget(0, 0, 0, event.size.width, event.size.height);
-				
+
 				pSystem->SetWindowWidth(event.size.width);
 				pSystem->SetWindowHeight(event.size.height);
 			}
@@ -76,7 +76,7 @@ int main()
 		pModel->PlaySequence();
 		pMeshMngr->Render();
 		pMeshMngr->ClearRenderList();
-		
+
 		// end the current frame (internally swaps the front and back buffers)
 		window.display();
 	}

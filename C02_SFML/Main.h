@@ -1,14 +1,19 @@
 /*--------------------------------------------------------------------------------------------------
-This project was generated in 2013
+This project was generated in 2018
 --------------------------------------------------------------------------------------------------*/
 #ifndef __MAIN_H_
 #define __MAIN_H_
 
-#include <iostream>
-#include "Simplex\Simplex.h"
-#include "GLFW\glfw3.h"
+#include <stdio.h>
+#include <stdlib.h>
 
-#endif //_MAIN_H
+#include <GL\glew.h>
+#include <GL\wglew.h>
+
+#include <SFML/Window.hpp>
+#include <SFML/OpenGL.hpp>
+
+#endif //__MAIN_H_
 
 /*
 USAGE:

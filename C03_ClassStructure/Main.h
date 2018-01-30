@@ -1,14 +1,12 @@
 /*--------------------------------------------------------------------------------------------------
-This project was generated in 2013
+This project was generated in 2018
 --------------------------------------------------------------------------------------------------*/
 #ifndef __MAIN_H_
 #define __MAIN_H_
 
-#include <iostream>
-#include "Simplex\Simplex.h"
-#include "GLFW\glfw3.h"
+#include "AppClass.h"
 
-#endif //_MAIN_H
+#endif //__MAIN_H_
 
 /*
 USAGE:
