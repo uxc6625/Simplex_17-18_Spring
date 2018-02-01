@@ -27,15 +27,15 @@ int main()
 
 	// Initialize GLEW
 	glewExperimental = GL_TRUE;
-	glewInit();
+	glewInit(); //run glew setup
 
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glEnable(GL_BLEND);	//Enable pixel blend
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); //type of the blend function
 
-	glEnable(GL_DEPTH_TEST);	// Enables Depth Testing
-	glDepthFunc(GL_LEQUAL);		// The Type Of Depth Testing To Do
+	glEnable(GL_DEPTH_TEST);// Enables Depth Testing
+	glDepthFunc(GL_LEQUAL);	// The Type Of Depth Testing To Do
 
-	glEnable(GL_CULL_FACE);
+	glEnable(GL_CULL_FACE);	//Don't show faces from behind
 
 	// load resources, initialize the OpenGL states, ...
 	sf::Vector2u size = window.getSize();

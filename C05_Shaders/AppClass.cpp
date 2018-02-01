@@ -40,10 +40,10 @@ void AppClass::Run(void)
 }
 void AppClass::Init(void)
 {
-	InitWindow(); //Create Window
-	InitOpenGL();			//Initialize Rendering Context
-	InitShaders();			//Compile Shaders
-	InitVariables();		//Init shape
+	InitWindow();	//Create Window
+	InitOpenGL();	//Initialize Rendering Context
+	InitShaders();	//Compile Shaders
+	InitVariables();//Init shape
 }
 void AppClass::InitWindow()
 {
@@ -67,42 +67,65 @@ void AppClass::InitOpenGL(void)
 }
 void AppClass::InitShaders(void)
 {
-	m_uShaderProgramID = LoadShaders("Shaders//Minimal.vs", "Shaders//Minimal.fs");
+	m_uShaderProgramID = LoadShaders("Shaders//BasicColor.vs", "Shaders//BasicColor.fs");
 	glUseProgram(m_uShaderProgramID);
 }
 void AppClass::InitVariables(void)
 {
-	GLfloat positions[] = {
-		-1.0f, -1.0f, 0.0f,
-		1.0f, -1.0f, 0.0f,
-		0.0f, 1.0f, 0.0f
-	};
+	std::vector<glm::vec3> lVertex;
+	//vertex 1
+	lVertex.push_back(glm::vec3(-1.0f, -1.0f, 0.0f)); //position
+	lVertex.push_back(glm::vec3(1.0f, 0.0f, 0.0f)); //color
+	//vertex 2
+	lVertex.push_back(glm::vec3(1.0f, -1.0f, 0.0f)); //position
+	lVertex.push_back(glm::vec3(0.0f, 1.0f, 0.0f)); //color
+	//vertex 3
+	lVertex.push_back(glm::vec3(0.0f, 1.0f, 0.0f)); //position
+	lVertex.push_back(glm::vec3(0.0f, 0.0f, 1.0f)); //color
+	
+	glGenVertexArrays(1, &m_uVAO);//Generate vertex array object
+	glGenBuffers(1, &m_uVBO);//Generate Vertex Buffered Object
 
-	// Create Vertex Array Object
-	glGenVertexArrays(1, &m_uVAO);
-	glBindVertexArray(m_uVAO);
-		
-	// Create Vertex Buffer Object
-	glGenBuffers(1, &m_uVBO);
-	glBindBuffer(GL_ARRAY_BUFFER, m_uVBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(positions), &positions, GL_STATIC_DRAW);
+	glBindVertexArray(m_uVAO);//Bind the VAO
+	glBindBuffer(GL_ARRAY_BUFFER, m_uVBO);//Bind the VBO
 
-	// Get the Attribute of position from the shader program
-	GLint positionBufferID = glGetAttribLocation(m_uShaderProgramID, "positionBuffer");
-	glEnableVertexAttribArray(positionBufferID);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (GLvoid*)0);
+	//Generate space for the VBO (vertex count times size of vec3)
+	glBufferData(GL_ARRAY_BUFFER, lVertex.size() * sizeof(glm::vec3), &lVertex[0], GL_STATIC_DRAW);
+
+	//count the attributes
+	int attributeCount = 2;
+	
+	// Position attribute
+	glEnableVertexAttribArray(0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, attributeCount * sizeof(glm::vec3), (GLvoid*)0);
+
+	// Color attribute
+	glEnableVertexAttribArray(1);
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, attributeCount * sizeof(glm::vec3), (GLvoid*)(1 * sizeof(glm::vec3)));
 }
 void AppClass::ProcessKeyboard(sf::Event a_event)
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
 		m_bRunning = false;
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1))
+		m_v3Color = glm::vec3(1.0f, 0.0f, 0.0f);
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num2))
+		m_v3Color = glm::vec3(0.0f, 1.0f, 0.0f);
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num3))
+		m_v3Color = glm::vec3(0.0f, 0.0f, 1.0f);
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num0))
+		m_v3Color = glm::vec3(-1.0f, -1.0f, -1.0f);
 }
 void AppClass::Display(void)
 {
 	// clear the buffers
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	//Color and draw
+	//read uniforms and send values
+	GLuint SolidColor = glGetUniformLocation(m_uShaderProgramID, "SolidColor");
+	glUniform3f(SolidColor, m_v3Color.r, m_v3Color.g, m_v3Color.b);
+
+	//draw content
 	glDrawArrays(GL_TRIANGLES, 0, 3);
 
 	// end the current frame (internally swaps the front and back buffers)
