@@ -18,7 +18,7 @@ class AppClass
 	std::string m_sWindowName = ""; //window name
 	sf::Window* m_pWindow = nullptr; //SFML window
 	GLuint m_uShaderProgramID = 0; //Shader program
-	GLuint m_uVAO = 0; //Vertes Array Object
+	GLuint m_uVAO = 0; //Vertex Array Object
 	GLuint m_uVBO = 0; //Vertex Buffer Object
 	bool m_bRunning = true; //Running Flag
 		
