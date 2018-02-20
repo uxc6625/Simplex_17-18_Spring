@@ -7,7 +7,7 @@ void Application::InitVariables(void)
 	
 	//init the mesh
 	m_pMesh = new MyMesh();
-	m_pMesh->GenerateCone(0.5f, 1.0f, 7, C_RED);
+	m_pMesh->GenerateCone(0.5f, 1.0f, 7, C_YELLOW);
 }
 void Application::Update(void)
 {

@@ -1,4 +1,8 @@
 #include "MyMesh.h"
+#define _USE_MATH_DEFINES // for C++  
+#include <cmath>  
+#include <math.h>
+using namespace std;
 void MyMesh::Init(void)
 {
 	m_bBinded = false;
@@ -276,7 +280,16 @@ void MyMesh::GenerateCone(float a_fRadius, float a_fHeight, int a_nSubdivisions,
 	Init();
 
 	// Replace this with your code
-	GenerateCube(a_fRadius * 2.0f, a_v3Color);
+	//GenerateCube(a_fRadius * 2.0f, a_v3Color);
+	std::vector<vector3> vertices( a_fRadius +  a_fHeight + a_nSubdivisions * 2 + 2);
+	int vert = 0;
+	float _2pi = M_PI * 2.0f;
+	
+
+	// Bottom cap
+
+
+
 	// -------------------------------
 
 	// Adding information about color
@@ -300,7 +313,12 @@ void MyMesh::GenerateCylinder(float a_fRadius, float a_fHeight, int a_nSubdivisi
 	Init();
 
 	// Replace this with your code
-	GenerateCube(a_fRadius * 2.0f, a_v3Color);
+	//GenerateCube(a_fRadius * 2.0f, a_v3Color);
+	//3--2
+	//|  |
+	//0--1
+	
+
 	// -------------------------------
 
 	// Adding information about color
@@ -330,8 +348,8 @@ void MyMesh::GenerateTube(float a_fOuterRadius, float a_fInnerRadius, float a_fH
 	Init();
 
 	// Replace this with your code
-	GenerateCube(a_fOuterRadius * 2.0f, a_v3Color);
-	// -------------------------------
+	//GenerateCube(a_fOuterRadius * 2.0f, a_v3Color);
+	//---------------
 
 	// Adding information about color
 	CompleteMesh(a_v3Color);
@@ -362,8 +380,8 @@ void MyMesh::GenerateTorus(float a_fOuterRadius, float a_fInnerRadius, int a_nSu
 	Init();
 
 	// Replace this with your code
-	GenerateCube(a_fOuterRadius * 2.0f, a_v3Color);
-	// -------------------------------
+	//GenerateCube(a_fOuterRadius * 2.0f, a_v3Color);
+	//--------------
 
 	// Adding information about color
 	CompleteMesh(a_v3Color);
@@ -377,7 +395,7 @@ void MyMesh::GenerateSphere(float a_fRadius, int a_nSubdivisions, vector3 a_v3Co
 	//Sets minimum and maximum of subdivisions
 	if (a_nSubdivisions < 1)
 	{
-		GenerateCube(a_fRadius * 2.0f, a_v3Color);
+		//GenerateCube(a_fRadius * 2.0f, a_v3Color);
 		return;
 	}
 	if (a_nSubdivisions > 6)
@@ -387,7 +405,9 @@ void MyMesh::GenerateSphere(float a_fRadius, int a_nSubdivisions, vector3 a_v3Co
 	Init();
 
 	// Replace this with your code
-	GenerateCube(a_fRadius * 2.0f, a_v3Color);
+	//GenerateCube(a_fRadius * 2.0f, a_v3Color);
+
+
 	// -------------------------------
 
 	// Adding information about color

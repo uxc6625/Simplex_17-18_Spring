@@ -11,9 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{7EDBEED8-75ED-48EE-9F13-5D4A895E8F1B}</ProjectGuid>
-    <RootNamespace>A02 - 3D Primitives</RootNamespace>
-    <ProjectName>A02 - 3D Primitives</ProjectName>
+    <ProjectGuid>{5F7C76B5-A910-4980-ADBB-EE60E4854287}</ProjectGuid>
+    <RootNamespace>E05_Translations(Space Invader)</RootNamespace>
+    <ProjectName>E05_Translations(Space Invader)</ProjectName>
     <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -121,6 +121,7 @@ xcopy "$(SolutionDir)include\Simplex\Shaders" "$(SolutionDir)_Binary\Shaders" /y
     <ClInclude Include="..\res\resource.h" />
     <ClInclude Include="AppClass.h" />
     <ClInclude Include="ControllerConfiguration.h" />
+    <ClInclude Include="Definitions.h" />
     <ClInclude Include="Main.h" />
     <ClInclude Include="MyMesh.h" />
   </ItemGroup>

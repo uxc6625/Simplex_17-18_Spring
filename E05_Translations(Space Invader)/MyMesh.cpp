@@ -280,7 +280,7 @@ void MyMesh::GenerateCone(float a_fRadius, float a_fHeight, int a_nSubdivisions,
 	pMesh->GenerateCone(a_fRadius, a_fHeight, a_nSubdivisions, a_v3Color);
 	m_lVertexPos = pMesh->GetVertexList();
 	m_uVertexCount = m_lVertexPos.size();
-	//SafeDelete(pMesh);
+	SafeDelete(pMesh);
 	// -------------------------------
 
 	// Adding information about color
