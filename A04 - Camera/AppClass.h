@@ -19,6 +19,10 @@ class Application
 	MyCamera* m_pCamera = nullptr; //Camera class
 	MyMeshManager* m_pMyMeshMngr = nullptr; //My Mesh Manager
 	String m_sProgrammer = "Alberto Bobadilla - labigm@rit.edu"; //Programmer
+	glm::vec3 cameraPos = vector3(0.0f, 3.0f, 20.0f);
+	glm::vec3 cameraFront = vector3(0.0f, 3.0f, 19.0f);
+	glm::vec3 cameraUp = AXIS_Y;
+	float movementSpeed = 0.1f;
 private:
 	static ImGuiObject gui; //GUI object
 

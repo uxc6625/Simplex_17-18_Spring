@@ -15,6 +15,11 @@ class MyCamera
 	vector3 m_v3Position = vector3(0.0f, 0.0f, 10.0f); //Where my camera is located
 	vector3 m_v3Target = vector3(0.0f, 0.0f, 0.0f); //What I'm looking at
 	vector3 m_v3Up = vector3(0.0f, 1.0f, 0.0f); //What is up
+	vector3 m_v3Direction = glm::normalize(m_v3Position - m_v3Target);
+	vector3 m_v3Right = glm::normalize(glm::cross(m_v3Up, m_v3Direction));
+	vector3 m_v3cameraUp = glm::cross(m_v3Direction, m_v3Right);
+
+	float movementSpeed = 0.1f;
 
 	bool m_bPerspective = true; //perspective view? False is Orthographic
 
@@ -211,6 +216,10 @@ public:
 	OUTPUT: ---
 	*/
 	void CalculateProjectionMatrix(void);
+	void moveForward();
+	void moveBackward();
+	void moveLeft();
+	void moveRight();
 };
 
 } //namespace Simplex

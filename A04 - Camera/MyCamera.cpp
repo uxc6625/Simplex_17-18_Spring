@@ -154,3 +154,23 @@ void Simplex::MyCamera::CalculateProjectionMatrix(void)
 										m_v2NearFar.x, m_v2NearFar.y); //near and far
 	}
 }
+
+void Simplex::MyCamera::moveForward()
+{
+	m_v3Position += m_v3Direction * movementSpeed;
+}
+void Simplex::MyCamera::moveBackward()
+{
+	m_v3Position -= m_v3Direction * movementSpeed;
+
+}
+void Simplex::MyCamera::moveLeft()
+{
+	m_v3Position -= m_v3Right * movementSpeed;
+
+}
+void Simplex::MyCamera::moveRight()
+{
+	m_v3Position += m_v3Right * movementSpeed;
+
+}

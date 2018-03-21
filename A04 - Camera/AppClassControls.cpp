@@ -385,6 +385,42 @@ void Application::ProcessKeyboard(void)
 
 	if (fMultiplier)
 		fSpeed *= 5.0f;
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+		
+		m_pCamera->moveForward();
+	vector3 m_v3Direction1 = glm::normalize(cameraPos - cameraFront);
+	m_pCamera->SetTarget(m_v3Direction1);
+	vector3 m_v3Right1 = glm::normalize(glm::cross(cameraUp, m_v3Direction1));
+	vector3 m_v3cameraUp1 = glm::cross(m_v3Direction1, m_v3Right1);
+	m_pCamera->SetUp(m_v3cameraUp1);
+	
+		
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+		m_pCamera->moveBackward();
+	vector3 m_v3Direction2 = glm::normalize(cameraPos - cameraFront);
+	m_pCamera->SetTarget(m_v3Direction2);
+	vector3 m_v3Right2 = glm::normalize(glm::cross(cameraUp, m_v3Direction2));
+	vector3 m_v3cameraUp2 = glm::cross(m_v3Direction2, m_v3Right2);
+	m_pCamera->SetUp(m_v3cameraUp2);
+	
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+		m_pCamera->moveLeft();
+	vector3 m_v3Direction3 = glm::normalize(cameraPos - cameraFront);
+	m_pCamera->SetTarget(m_v3Direction3);
+	vector3 m_v3Right3 = glm::normalize(glm::cross(cameraUp, m_v3Direction3));
+	vector3 m_v3cameraUp3 = glm::cross(m_v3Direction3, m_v3Right3);
+	m_pCamera->SetUp(m_v3cameraUp3);
+	
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+		m_pCamera->moveRight();
+	vector3 m_v3Direction4 = glm::normalize(cameraPos - cameraFront);
+	m_pCamera->SetTarget(m_v3Direction4);
+	vector3 m_v3Right4 = glm::normalize(glm::cross(cameraUp, m_v3Direction4));
+	vector3 m_v3cameraUp4 = glm::cross(m_v3Direction4, m_v3Right4);
+	m_pCamera->SetUp(m_v3cameraUp4);
+
+
 #pragma endregion
 }
 //Joystick
